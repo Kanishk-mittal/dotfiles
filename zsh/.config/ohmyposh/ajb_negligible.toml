@@ -80,12 +80,15 @@ version = 4
     style = 'powerline'
     foreground_templates = ['{{if eq "Charging" .State.String}}#4caf50{{end}}', '{{if eq "Discharging" .State.String}}#40c4ff{{end}}', '{{if eq "Full" .State.String}}#ff0000{{end}}']
     invert_powerline = true
+
   [[blocks.segments]]
     type = 'command'
     style = 'plain'
     foreground = 'yellow'
-    command = "acpi -b | grep -Eo '[0-9]{2}:[0-9]{2}:[0-9]{2}'"
-    template = '| ⏳ {{ if .Output }}{{ .Output }}{{ else }}Full{{ end }} '
+    template = '| ⏳ {{ .Output }} '
+    [blocks.segments.properties]
+      command = 'bash'
+      args = ['-c', 'acpi -b | grep -Eo "[0-9]{2}:[0-9]{2}:[0-9]{2}" || echo "Full"']
 
   [[blocks.segments]]
     template = '| {{ .CurrentDate | date "03:04:05 PM" }} '
