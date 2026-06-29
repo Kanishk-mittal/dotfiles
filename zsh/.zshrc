@@ -40,13 +40,12 @@ alias s='yay -Ss'
 alias yeet='yay -R'
 
 alias lg='lazygit'
-alias reloadwaybar='killall -SIGUSR2 waybar'
 alias tsl='sudo -E timeshift-launcher'
 alias ff='clear && fastfetch'
 alias searchfont='fc-list | rg -i'
 
 export ZSH=$HOME/.zsh
-export EDITOR="/usr/bin/nvim"
+export EDITOR="/usr/bin/nano"
 export TERMINAL="/usr/bin/kitty"
 
 function countdown() {
@@ -146,38 +145,32 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/ajb_negligible.toml)
 source <(fzf --zsh)
 eval "$(atuin init zsh)"
 
-# pnpm
-export PNPM_HOME="/home/roshanbinoj/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+# export ANDROID_HOME=$HOME/Android/Sdk
+# export PATH=$PATH:$ANDROID_HOME/emulator
+# export PATH=$PATH:$ANDROID_HOME/tools
+# export PATH=$PATH:$ANDROID_HOME/tools/bin
+# export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export PATH=$PATH:$HOME/Applications/
 export PATH=$PATH:$HOME/dotfiles/Scripts/
 
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/roshanbinoj/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/roshanbinoj/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/roshanbinoj/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/roshanbinoj/anaconda3/bin:$PATH"
-    fi
-fi
+__conda_setup="$('/home/kanishk/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)" 
+if [ $? -eq 0 ]; then 
+    eval "$__conda_setup" 
+else 
+    if [ -f "/home/kanishk/miniconda3/etc/profile.d/conda.sh" ]; then 
+        . "/home/kanishk/miniconda3/etc/profile.d/conda.sh" 
+    else 
+        export PATH="/home/kanishk/miniconda3/bin:$PATH" 
+    fi 
+fi 
 unset __conda_setup
 # <<< conda initialize <<<
 
-
-. "$HOME/.local/bin/env"
+# Added by Antigravity CLI installer
+export PATH="/home/kanishk/.local/bin:$PATH"
