@@ -1,0 +1,11 @@
+[Unit]
+Description=Auto-run Wallust on GNOME Wallpaper Change
+After=graphical-session.target
+
+[Service]
+ExecStart=/home/kanishk/dotfiles/Scripts/wallust-watcher.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
