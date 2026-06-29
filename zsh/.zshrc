@@ -1,21 +1,55 @@
-#Folder structure for zsh
-#.
-# ├── .zsh
-# │   ├── plugins #has zsh-completions, zsh-autosuggestions, fzf.plugin.zsh and fsh
-# │   └── .zsh_history
-# └── .zshrc
-# zsh-completions : https://github.com/zsh-users/zsh-completions
-# zsh-autosuggestions: https://github.com/zsh-users/zsh-autosuggestions
-# fsh: https://github.com/zdharma/fast-syntax-highlighting
-# fzf: https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/fzf/fzf.plugin.zsh
+# ==========================================
+# 1. PATH EXPORTS
+# ==========================================
+export PATH=$PATH:$HOME/Applications/
+export PATH=$PATH:$HOME/dotfiles/Scripts/
+export PATH="/home/kanishk/.local/bin:$PATH"
 
-autoload -Uz compinit && compinit
+# Safe global npm binaries path (since you are using system Node)
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+export ZSH=$HOME/.zsh
+export EDITOR="/usr/bin/nano"
+export TERMINAL="/usr/bin/kitty"
+
+# Environment variables
+export NODE_OPTIONS="--disable-warning=ExperimentalWarning"
+
+# ==========================================
+# 2. ZSH HISTORY CONFIG
+# ==========================================
+export HISTFILE=$ZSH/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+
+# ==========================================
+# 3. COMPLETIONS (Cached & Optimized)
+# ==========================================
+fpath=(
+  /usr/share/zsh/site-functions
+  /usr/share/zsh/functions/Completion
+  $fpath
+)
+
+autoload -Uz compinit
+# Only run compinit once every 24 hours to eliminate terminal startup lag
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Case-insensitive matching
 zstyle ':completion:*' menu select # Interactive menu selection
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
+# ==========================================
+# 4. ALIASES & FUNCTIONS
+# ==========================================
 alias l="eza -lah"
 alias n="nvim"
 alias t="tmux"
@@ -29,37 +63,29 @@ alias clera="clear"
 alias update='yay -Syu --disable-download-timeout'
 alias storage="df -h | grep 'Filesystem\|nvme'"
 alias py='python3'
-
 alias fixgpgme='sudo rm -r /var/lib/pacman/sync/'
-
 alias yt-dlp-aria="yt-dlp --downloader aria2c --downloader-args '-c -j 3 -x 3 -s 3 -k 1M'"
-
 alias q="yay -Qi"
 alias i="yay -S"
 alias s='yay -Ss'
 alias yeet='yay -R'
-
 alias lg='lazygit'
 alias tsl='sudo -E timeshift-launcher'
 alias ff='clear && fastfetch'
 alias searchfont='fc-list | rg -i'
 
-export ZSH=$HOME/.zsh
-export EDITOR="/usr/bin/nano"
-export TERMINAL="/usr/bin/kitty"
-
 function countdown() {
     termdown $1 && play -q -n synth 5 sin 100-1000
 }
 
-#yazi
+# yazi
 function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
 }
 
 function dls(){
@@ -84,44 +110,9 @@ bindkey -M emacs '\es' sesh-sessions
 bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
 
-### ---- history config -------------------------------------
-export HISTFILE=$ZSH/.zsh_history
-
-# How many commands zsh will load to memory.
-export HISTSIZE=10000
-
-# How many commands history will save on file.
-export SAVEHIST=10000
-
-# History won't save duplicates.
-setopt HIST_IGNORE_ALL_DUPS
-
-# History won't show duplicates on search.
-setopt HIST_FIND_NO_DUPS
-
-
-#zdharma's fast highlighting
-source ~/.zsh/plugins/fsh/F-Sy-H.plugin.zsh
-# source ~/.zsh/plugins/fsh/fast-syntax-highlighting.plugin.zsh
-
-#zsh-users' autosuggestion
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-#zsh-users' completion plugin
-# fpath=($ZSH/plugins/zsh-completions/src $fpath)
-
-# fpath=(~/.zsh/completion $fpath)
-
-# Additional completion sources
-fpath=(
-  /usr/share/zsh/site-functions
-  /usr/share/zsh/functions/Completion
-  $fpath
-)
-
-autoload -U compinit
-compinit
-
+# ==========================================
+# 5. PYTHON VENV HOOK
+# ==========================================
 python_venv() {
   MYVENV=./env
   # when you cd into a folder that contains $MYVENV
@@ -131,46 +122,40 @@ python_venv() {
 }
 autoload -U add-zsh-hook
 add-zsh-hook chpwd python_venv
-
 python_venv
 
-export NODE_OPTIONS="--disable-warning=ExperimentalWarning"
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# ==========================================
+# 6. PLUGINS & INITS
+# ==========================================
+# zdharma's fast highlighting
+source ~/.zsh/plugins/fsh/F-Sy-H.plugin.zsh
+
+# zsh-users' autosuggestion
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 eval "$(zoxide init zsh)"
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/ajb_negligible.toml)"
+eval "$(atuin init zsh)"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-eval "$(atuin init zsh)"
 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# export ANDROID_HOME=$HOME/Android/Sdk
-# export PATH=$PATH:$ANDROID_HOME/emulator
-# export PATH=$PATH:$ANDROID_HOME/tools
-# export PATH=$PATH:$ANDROID_HOME/tools/bin
-# export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-export PATH=$PATH:$HOME/Applications/
-export PATH=$PATH:$HOME/dotfiles/Scripts/
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/kanishk/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)" 
-if [ $? -eq 0 ]; then 
-    eval "$__conda_setup" 
-else 
-    if [ -f "/home/kanishk/miniconda3/etc/profile.d/conda.sh" ]; then 
-        . "/home/kanishk/miniconda3/etc/profile.d/conda.sh" 
+# ==========================================
+# 7. LAZY LOAD CONDA
+# ==========================================
+# Conda initialization is heavy, so it only runs when you type 'conda'
+conda() {
+    unset -f conda
+    __conda_setup="$('/home/kanishk/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)" 
+    if [ $? -eq 0 ]; then 
+        eval "$__conda_setup" 
     else 
-        export PATH="/home/kanishk/miniconda3/bin:$PATH" 
+        if [ -f "/home/kanishk/miniconda3/etc/profile.d/conda.sh" ]; then 
+            . "/home/kanishk/miniconda3/etc/profile.d/conda.sh" 
+        else 
+            export PATH="/home/kanishk/miniconda3/bin:$PATH" 
+        fi 
     fi 
-fi 
-unset __conda_setup
-# <<< conda initialize <<<
-
-# Added by Antigravity CLI installer
-export PATH="/home/kanishk/.local/bin:$PATH"
+    unset __conda_setup
+    conda "$@"
+}
