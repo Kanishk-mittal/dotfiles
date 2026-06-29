@@ -71,7 +71,6 @@ alias s='yay -Ss'
 alias yeet='yay -R'
 alias lg='lazygit'
 alias tsl='sudo -E timeshift-launcher'
-alias ff='clear && fastfetch'
 alias searchfont='fc-list | rg -i'
 
 function countdown() {
