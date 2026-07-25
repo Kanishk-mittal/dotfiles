@@ -1,0 +1,204 @@
+# Wallust Yazi Theme Template (Updated for Yazi v26.5.6)
+
+# ==============================================================================
+# Global App Styling
+# ==============================================================================
+[app]
+# The app's overall style, supporting terminal background colors if OSC 11 is supported
+overall = { bg = "{{background}}" }
+
+# ==============================================================================
+# Manager Pane Layout Styling
+# ==============================================================================
+[mgr]
+cwd = { fg = "{{color6}}", italic = true }
+
+# Visual Selections & Finds
+find_keyword = { fg = "{{color3}}", bg = "{{background}}", bold = true, underline = true }
+find_position = { fg = "{{color5}}", bg = "{{background}}", bold = true }
+
+# Symbolic Links
+symlink_target = { fg = "{{color6}}" }
+
+# Markers
+marker_copied = { fg = "{{color3}}", bg = "{{color3}}" }
+marker_cut = { fg = "{{color1}}", bg = "{{color1}}" }
+marker_marked = { fg = "{{color2}}", bg = "{{color2}}" }
+marker_selected = { fg = "{{color4}}", bg = "{{color4}}" }
+
+# Counts
+count_copied = { fg = "{{background}}", bg = "{{color3}}" }
+count_cut = { fg = "{{background}}", bg = "{{color1}}" }
+count_selected = { fg = "{{background}}", bg = "{{color4}}" }
+
+# Border Accents
+border_symbol = "│"
+border_style = { fg = "{{color8}}" }
+
+# ==============================================================================
+# Indicator Bars (Pane Borders)
+# ==============================================================================
+[indicator]
+parent = { fg = "{{color8}}" }
+current = { fg = "{{color4}}" }
+preview = { fg = "{{color8}}" }
+padding = { open = "", close = "" }
+
+# ==============================================================================
+# Top Navigation Tabs
+# ==============================================================================
+[tabs]
+active = { fg = "{{color2}}", bg = "{{background}}", bold = true }
+inactive = { fg = "{{color7}}", bg = "{{background}}" }
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
+# ==============================================================================
+# Status Bar (Bottom Panel)
+# ==============================================================================
+[status]
+overall = { bg = "{{background}}" }
+separator_open = ""
+separator_close = ""
+
+# Permissions
+perm_type = { fg = "{{color4}}" }
+perm_read = { fg = "{{color3}}" }
+perm_write = { fg = "{{color1}}" }
+perm_exec = { fg = "{{color2}}" }
+perm_sep = { fg = "{{color8}}" }
+
+# Progress Bar
+progress_label = { fg = "{{foreground}}", bold = true }
+progress_normal = { fg = "{{color4}}", bg = "{{background}}" }
+progress_error = { fg = "{{color1}}", bg = "{{background}}" }
+
+# ==============================================================================
+# Modes (Status bar mode pills)
+# ==============================================================================
+[mode]
+normal_main = { fg = "{{background}}", bg = "{{color4}}", bold = true }
+normal_alt = { fg = "{{color4}}", bg = "{{background}}" }
+select_main = { fg = "{{background}}", bg = "{{color3}}", bold = true }
+select_alt = { fg = "{{color3}}", bg = "{{background}}" }
+unset_main = { fg = "{{background}}", bg = "{{color1}}", bold = true }
+unset_alt = { fg = "{{color1}}", bg = "{{background}}" }
+
+# ==============================================================================
+# Input & Popups
+# ==============================================================================
+[input]
+border = { fg = "{{color5}}" }
+title = { fg = "{{color5}}", bold = true }
+value = { fg = "{{foreground}}" }
+selected = { bg = "{{color8}}" }
+
+[confirm]
+border = { fg = "{{color4}}" }
+title = { fg = "{{color4}}", bold = true }
+body = { fg = "{{foreground}}" }
+list = { fg = "{{color5}}" }
+btn_yes = { fg = "{{background}}", bg = "{{color2}}" }
+btn_no = { fg = "{{foreground}}", bg = "{{background}}" }
+btn_labels = ["  [Y]es  ", "  (N)o  "]
+
+[notify]
+title_info = { fg = "{{color2}}" }
+title_warn = { fg = "{{color3}}" }
+title_error = { fg = "{{color1}}" }
+
+# ==============================================================================
+# Menus, Pickers, & Which-Key
+# ==============================================================================
+[pick]
+border = { fg = "{{color4}}" }
+active = { fg = "{{color2}}", bold = true }
+inactive = { fg = "{{foreground}}" }
+
+[cmp] # Completions
+border = { fg = "{{color6}}" }
+active = { fg = "{{background}}", bg = "{{color6}}", bold = true }
+inactive = { fg = "{{foreground}}" }
+icon_file = "📄"
+icon_folder = "📁"
+icon_command = "🚀"
+
+[spot] # Spotter Menu
+border = { fg = "{{color4}}" }
+title = { fg = "{{color4}}", bold = true }
+tbl_col = { fg = "{{color2}}" }
+tbl_cell = { fg = "{{background}}", bg = "{{color4}}" }
+
+[which]
+cols = 3
+mask = { bg = "{{background}}" }
+cand = { fg = "{{color6}}" }
+rest = { fg = "{{color8}}" }
+desc = { fg = "{{color5}}" }
+separator = " ➜ "
+separator_style = { fg = "{{color8}}" }
+
+[tasks]
+border = { fg = "{{color4}}" }
+title = { fg = "{{color4}}", bold = true }
+hovered = { fg = "{{color2}}", bold = true }
+
+[help]
+on = { fg = "{{color6}}" }
+run = { fg = "{{color5}}" }
+desc = { fg = "{{foreground}}" }
+hovered = { bg = "{{color8}}", bold = true }
+footer = { fg = "{{background}}", bg = "{{foreground}}" }
+icon_info = "ℹ️"
+icon_warn = "⚠️"
+icon_error = "❌"
+
+# ==============================================================================
+# Dynamic Folder & Icon Styling
+# ==============================================================================
+[icon]
+prepend_dirs = [
+    { name = "Desktop", text = "", fg = "{{color4}}" },
+    { name = "Documents", text = "", fg = "{{color4}}" },
+    { name = "Downloads", text = "", fg = "{{color4}}" },
+    { name = "Music", text = "", fg = "{{color4}}" },
+    { name = "Pictures", text = "", fg = "{{color4}}" },
+    { name = "Videos", text = "", fg = "{{color4}}" },
+]
+
+prepend_conds = [
+    # Global catch-all condition: if it is a directory, color it Wallust green
+    { if = "dir", text = "", fg = "{{color4}}" },
+]
+
+# Comprehensive File Type Color Overrides
+[filetype]
+rules = [
+    # Directories / Folders
+    { mime = "inode/directory", fg = "{{color4}}", bold = true },
+
+    # Text & Source Code files
+    { mime = "text/*", fg = "{{foreground}}" },
+    { mime = "application/{json,xml,toml,yaml,javascript}", fg = "{{color6}}" },
+
+    # Executables and Scripts
+    { mime = "application/x-executable", fg = "{{color2}}", bold = true },
+    { mime = "application/x-shellscript", fg = "{{color2}}" },
+
+    # Rich Documents
+    { mime = "application/pdf", fg = "{{color1}}" },
+    { mime = "application/msword", fg = "{{color4}}" },
+
+    # Images & Media
+    { mime = "image/*", fg = "{{color5}}" },
+    { mime = "image/svg+xml", fg = "{{color13}}" },
+    { mime = "video/*", fg = "{{color1}}" },
+    { mime = "audio/*", fg = "{{color3}}" },
+
+    # Archives
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive}", fg = "{{color11}}" },
+
+    # Fallback/Orphans
+    { url = "*", is = "orphan", fg = "{{color1}}" },
+    { url = "*", fg = "{{foreground}}" },
+]
