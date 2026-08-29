@@ -1,109 +1,119 @@
 version = 4
 
 [[blocks]]
-  type = 'prompt'
-  alignment = 'left'
+type = 'prompt'
+alignment = 'left'
 
-  [[blocks.segments]]
-    template = '{{ if .WSL }}WSL at {{ end }}{{.Icon}}'
-    foreground = 'cyan'
-    type = 'os'
-    style = 'powerline'
+[[blocks.segments]]
+template = '{{ if .WSL }}WSL at {{ end }}{{.Icon}} '
+foreground = 'cyan'
+type = 'os'
+style = 'powerline'
 
-  [[blocks.segments]]
-    template = ' {{ .Path }} '
-    foreground = 'cyan'
-    type = 'path'
-    style = 'plain'
+[[blocks.segments]]
+template = '{{ .UserName }} '
+foreground = 'yellow'
+type = 'session'
+style = 'plain'
 
-  [[blocks.segments]]
-    template = ':: {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }} '
-    foreground = '#F1502F'
-    type = 'git'
-    style = 'plain'
+[[blocks.segments]]
+template = '{{ .Path }} '
+foreground = 'cyan'
+type = 'path'
+style = 'plain'
 
-[[blocks]]
-  type = 'prompt'
-  alignment = 'right'
-
-  [[blocks.segments]]
-    template = '| root '
-    foreground = 'red'
-    type = 'root'
-    style = 'plain'
-
-  [[blocks.segments]]
-    template = '|  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
-    foreground = '#06A4CE'
-    type = 'dart'
-    style = 'powerline'
-
-  [[blocks.segments]]
-    template = '|  {{ .Full }} '
-    foreground = '#7FD5EA'
-    type = 'go'
-    style = 'powerline'
-
-  [[blocks.segments]]
-    template = '| 󱘗 {{ .Full }} '
-    foreground = '#F5710A'
-    type = 'rust'
-    style = 'powerline'
-
-  [[blocks.segments]]
-    template = '|  {{ .Full }} '
-    foreground = '#F72B34'
-    type = 'java'
-    style = 'powerline'
-
-  [[blocks.segments]]
-    template = '|  {{ .Full }} '
-    foreground = '#1C6AC2'
-    type = 'lua'
-    style = 'powerline'
-
-  [[blocks.segments]]
-    template = '|  {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} '
-    foreground = '#6CA35E'
-    type = 'node'
-    style = 'powerline'
-
-  [[blocks.segments]]
-    template = '|  {{ .Venv }} '
-    foreground = '#4584b6'
-    type = 'python'
-    style = 'plain'
-
-  [[blocks.segments]]
-    template = '| {{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }}  '
-    type = 'battery'
-    style = 'powerline'
-    foreground_templates = ['{{if eq "Charging" .State.String}}#4caf50{{end}}', '{{if eq "Discharging" .State.String}}#40c4ff{{end}}', '{{if eq "Full" .State.String}}#ff0000{{end}}']
-    invert_powerline = true
-
-  [[blocks.segments]]
-    type = 'command'
-    style = 'plain'
-    foreground = 'yellow'
-    template = '| ⏳ {{ .Output }} '
-    [blocks.segments.properties]
-      command = 'bash'
-      args = ['-c', 'acpi -b | grep -Eo "[0-9]{2}:[0-9]{2}:[0-9]{2}" || echo "Full"']
-
-  [[blocks.segments]]
-    template = '| {{ .CurrentDate | date "03:04:05 PM" }} '
-    foreground = 'lightGreen'
-    type = 'time'
-    style = 'plain'
+[[blocks.segments]]
+template = ':: {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }} '
+foreground = '#F1502F'
+type = 'git'
+style = 'plain'
 
 [[blocks]]
-  type = 'prompt'
-  alignment = 'left'
-  newline = true
+type = 'prompt'
+alignment = 'right'
 
-  [[blocks.segments]]
-    template = ' '
-    foreground = 'lightGreen'
-    type = 'status'
-    style = 'powerline'
-    foreground_templates = ['{{ if gt .Code 0 }}red{{ end }}']
+[[blocks.segments]]
+template = '| root '
+foreground = 'red'
+type = 'root'
+style = 'plain'
+
+[[blocks.segments]]
+template = '|  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
+foreground = '#06A4CE'
+type = 'dart'
+style = 'powerline'
+
+[[blocks.segments]]
+template = '|  {{ .Full }} '
+foreground = '#7FD5EA'
+type = 'go'
+style = 'powerline'
+
+[[blocks.segments]]
+template = '| 󱘗 {{ .Full }} '
+foreground = '#F5710A'
+type = 'rust'
+style = 'powerline'
+
+[[blocks.segments]]
+template = '|  {{ .Full }} '
+foreground = '#F72B34'
+type = 'java'
+style = 'powerline'
+
+[[blocks.segments]]
+template = '|  {{ .Full }} '
+foreground = '#1C6AC2'
+type = 'lua'
+style = 'powerline'
+
+[[blocks.segments]]
+template = '|  {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} '
+foreground = '#6CA35E'
+type = 'node'
+style = 'powerline'
+
+[[blocks.segments]]
+template = '|  {{ .Venv }} '
+foreground = '#4584b6'
+type = 'python'
+style = 'plain'
+
+[[blocks.segments]]
+template = '| {{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }}  '
+type = 'battery'
+style = 'powerline'
+foreground_templates = [
+  '{{if eq "Charging" .State.String}}#4caf50{{end}}',
+  '{{if eq "Discharging" .State.String}}#40c4ff{{end}}',
+  '{{if eq "Full" .State.String}}#ff0000{{end}}',
+]
+invert_powerline = true
+
+[[blocks.segments]]
+type = 'command'
+style = 'plain'
+foreground = 'yellow'
+template = '| ⏳ {{ .Output }} '
+[blocks.segments.properties]
+command = 'bash'
+args = ['-c', 'acpi -b | grep -Eo "[0-9]{2}:[0-9]{2}:[0-9]{2}" || echo "Full"']
+
+[[blocks.segments]]
+template = '| {{ .CurrentDate | date "03:04:05 PM" }} '
+foreground = 'lightGreen'
+type = 'time'
+style = 'plain'
+
+[[blocks]]
+type = 'prompt'
+alignment = 'left'
+newline = true
+
+[[blocks.segments]]
+template = ' '
+foreground = 'lightGreen'
+type = 'status'
+style = 'powerline'
+foreground_templates = ['{{ if gt .Code 0 }}red{{ end }}']

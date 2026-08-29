@@ -52,30 +52,13 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 # ==========================================
 alias l="eza -lah"
 alias n="nvim"
-alias t="tmux"
-alias tkill="tmux kill-server"
-alias ta="tmux attach -t"
-alias tx="tmuxinator"
 alias nf="nvim ./"
 alias ls="eza"
 alias gpus='lspci -k | grep -A 2 -E "(VGA|3D)"'
-alias clera="clear"
 alias update='yay -Syu --disable-download-timeout'
 alias storage="df -h | grep 'Filesystem\|nvme'"
-alias py='python3'
-alias fixgpgme='sudo rm -r /var/lib/pacman/sync/'
-alias yt-dlp-aria="yt-dlp --downloader aria2c --downloader-args '-c -j 3 -x 3 -s 3 -k 1M'"
-alias q="yay -Qi"
-alias i="yay -S"
-alias s='yay -Ss'
-alias yeet='yay -R'
 alias lg='lazygit'
-alias tsl='sudo -E timeshift-launcher'
 alias searchfont='fc-list | rg -i'
-
-function countdown() {
-    termdown $1 && play -q -n synth 5 sin 100-1000
-}
 
 # yazi
 function y() {
@@ -113,7 +96,7 @@ bindkey -M viins '\es' sesh-sessions
 # 5. PYTHON VENV HOOK
 # ==========================================
 python_venv() {
-  MYVENV=./env
+  MYVENV=./.venv
   # when you cd into a folder that contains $MYVENV
   [[ -d $MYVENV ]] && source $MYVENV/bin/activate > /dev/null 2>&1
   # when you cd into a folder that doesn't
@@ -158,3 +141,4 @@ conda() {
     unset __conda_setup
     conda "$@"
 }
+eval "$(fnm env --use-on-cd)"
