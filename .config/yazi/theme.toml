@@ -1,0 +1,204 @@
+# Wallust Yazi Theme Template (Updated for Yazi v26.5.6)
+
+# ==============================================================================
+# Global App Styling
+# ==============================================================================
+[app]
+# The app's overall style, supporting terminal background colors if OSC 11 is supported
+overall = { bg = "#2E6F2C" }
+
+# ==============================================================================
+# Manager Pane Layout Styling
+# ==============================================================================
+[mgr]
+cwd = { fg = "#495145", italic = true }
+
+# Visual Selections & Finds
+find_keyword = { fg = "#648C63", bg = "#2E6F2C", bold = true, underline = true }
+find_position = { fg = "#675D4D", bg = "#2E6F2C", bold = true }
+
+# Symbolic Links
+symlink_target = { fg = "#495145" }
+
+# Markers
+marker_copied = { fg = "#648C63", bg = "#648C63" }
+marker_cut = { fg = "#BDBF71", bg = "#BDBF71" }
+marker_marked = { fg = "#939558", bg = "#939558" }
+marker_selected = { fg = "#707355", bg = "#707355" }
+
+# Counts
+count_copied = { fg = "#2E6F2C", bg = "#648C63" }
+count_cut = { fg = "#2E6F2C", bg = "#BDBF71" }
+count_selected = { fg = "#2E6F2C", bg = "#707355" }
+
+# Border Accents
+border_symbol = "│"
+border_style = { fg = "#9FA043" }
+
+# ==============================================================================
+# Indicator Bars (Pane Borders)
+# ==============================================================================
+[indicator]
+parent = { fg = "#9FA043" }
+current = { fg = "#707355" }
+preview = { fg = "#9FA043" }
+padding = { open = "", close = "" }
+
+# ==============================================================================
+# Top Navigation Tabs
+# ==============================================================================
+[tabs]
+active = { fg = "#939558", bg = "#2E6F2C", bold = true }
+inactive = { fg = "#66672B", bg = "#2E6F2C" }
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
+# ==============================================================================
+# Status Bar (Bottom Panel)
+# ==============================================================================
+[status]
+overall = { bg = "#2E6F2C" }
+separator_open = ""
+separator_close = ""
+
+# Permissions
+perm_type = { fg = "#707355" }
+perm_read = { fg = "#648C63" }
+perm_write = { fg = "#BDBF71" }
+perm_exec = { fg = "#939558" }
+perm_sep = { fg = "#9FA043" }
+
+# Progress Bar
+progress_label = { fg = "#E9EBE8", bold = true }
+progress_normal = { fg = "#707355", bg = "#2E6F2C" }
+progress_error = { fg = "#BDBF71", bg = "#2E6F2C" }
+
+# ==============================================================================
+# Modes (Status bar mode pills)
+# ==============================================================================
+[mode]
+normal_main = { fg = "#2E6F2C", bg = "#707355", bold = true }
+normal_alt = { fg = "#707355", bg = "#2E6F2C" }
+select_main = { fg = "#2E6F2C", bg = "#648C63", bold = true }
+select_alt = { fg = "#648C63", bg = "#2E6F2C" }
+unset_main = { fg = "#2E6F2C", bg = "#BDBF71", bold = true }
+unset_alt = { fg = "#BDBF71", bg = "#2E6F2C" }
+
+# ==============================================================================
+# Input & Popups
+# ==============================================================================
+[input]
+border = { fg = "#675D4D" }
+title = { fg = "#675D4D", bold = true }
+value = { fg = "#E9EBE8" }
+selected = { bg = "#9FA043" }
+
+[confirm]
+border = { fg = "#707355" }
+title = { fg = "#707355", bold = true }
+body = { fg = "#E9EBE8" }
+list = { fg = "#675D4D" }
+btn_yes = { fg = "#2E6F2C", bg = "#939558" }
+btn_no = { fg = "#E9EBE8", bg = "#2E6F2C" }
+btn_labels = ["  [Y]es  ", "  (N)o  "]
+
+[notify]
+title_info = { fg = "#939558" }
+title_warn = { fg = "#648C63" }
+title_error = { fg = "#BDBF71" }
+
+# ==============================================================================
+# Menus, Pickers, & Which-Key
+# ==============================================================================
+[pick]
+border = { fg = "#707355" }
+active = { fg = "#939558", bold = true }
+inactive = { fg = "#E9EBE8" }
+
+[cmp] # Completions
+border = { fg = "#495145" }
+active = { fg = "#2E6F2C", bg = "#495145", bold = true }
+inactive = { fg = "#E9EBE8" }
+icon_file = "📄"
+icon_folder = "📁"
+icon_command = "🚀"
+
+[spot] # Spotter Menu
+border = { fg = "#707355" }
+title = { fg = "#707355", bold = true }
+tbl_col = { fg = "#939558" }
+tbl_cell = { fg = "#2E6F2C", bg = "#707355" }
+
+[which]
+cols = 3
+mask = { bg = "#2E6F2C" }
+cand = { fg = "#495145" }
+rest = { fg = "#9FA043" }
+desc = { fg = "#675D4D" }
+separator = " ➜ "
+separator_style = { fg = "#9FA043" }
+
+[tasks]
+border = { fg = "#707355" }
+title = { fg = "#707355", bold = true }
+hovered = { fg = "#939558", bold = true }
+
+[help]
+on = { fg = "#495145" }
+run = { fg = "#675D4D" }
+desc = { fg = "#E9EBE8" }
+hovered = { bg = "#9FA043", bold = true }
+footer = { fg = "#2E6F2C", bg = "#E9EBE8" }
+icon_info = "ℹ️"
+icon_warn = "⚠️"
+icon_error = "❌"
+
+# ==============================================================================
+# Dynamic Folder & Icon Styling
+# ==============================================================================
+[icon]
+prepend_dirs = [
+    { name = "Desktop", text = "", fg = "#707355" },
+    { name = "Documents", text = "", fg = "#707355" },
+    { name = "Downloads", text = "", fg = "#707355" },
+    { name = "Music", text = "", fg = "#707355" },
+    { name = "Pictures", text = "", fg = "#707355" },
+    { name = "Videos", text = "", fg = "#707355" },
+]
+
+prepend_conds = [
+    # Global catch-all condition: if it is a directory, color it Wallust green
+    { if = "dir", text = "", fg = "#707355" },
+]
+
+# Comprehensive File Type Color Overrides
+[filetype]
+rules = [
+    # Directories / Folders
+    { mime = "inode/directory", fg = "#707355", bold = true },
+
+    # Text & Source Code files
+    { mime = "text/*", fg = "#E9EBE8" },
+    { mime = "application/{json,xml,toml,yaml,javascript}", fg = "#495145" },
+
+    # Executables and Scripts
+    { mime = "application/x-executable", fg = "#939558", bold = true },
+    { mime = "application/x-shellscript", fg = "#939558" },
+
+    # Rich Documents
+    { mime = "application/pdf", fg = "#BDBF71" },
+    { mime = "application/msword", fg = "#707355" },
+
+    # Images & Media
+    { mime = "image/*", fg = "#675D4D" },
+    { mime = "image/svg+xml", fg = "#756853" },
+    { mime = "video/*", fg = "#BDBF71" },
+    { mime = "audio/*", fg = "#648C63" },
+
+    # Archives
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive}", fg = "#73A871" },
+
+    # Fallback/Orphans
+    { url = "*", is = "orphan", fg = "#BDBF71" },
+    { url = "*", fg = "#E9EBE8" },
+]
