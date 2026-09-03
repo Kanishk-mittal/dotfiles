@@ -1,0 +1,24 @@
+{
+    "workbench.colorCustomizations": {
+        "editor.background": "{{background}}",
+        "sideBar.background": "{{background}}",
+        "sideBar.foreground": "{{foreground}}",
+        "activityBar.foreground": "{{foreground}}",
+        "statusBar.background": "{{background}}",
+        "statusBar.foreground": "{{foreground}}",
+        "editor.foreground": "{{foreground}}",
+        "editorCursor.foreground": "{{cursor}}",
+        "editorSuggestWidget.background": "{{background}}",
+        "panel.background": "{{background}}",
+        "panelTitle.activeBorder": "{{color4}}",
+        "terminal.background": "{{background}}",
+        "terminal.ansiBlack": "{{color0}}",
+        "terminal.ansiRed": "{{color1}}",
+        "terminal.ansiGreen": "{{color2}}",
+        "terminal.ansiYellow": "{{color3}}",
+        "terminal.ansiBlue": "{{color4}}",
+        "terminal.ansiMagenta": "{{color5}}",
+        "terminal.ansiCyan": "{{color6}}",
+        "terminal.ansiWhite": "{{color7}}"
+    }
+}

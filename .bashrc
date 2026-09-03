@@ -35,12 +35,12 @@ alias searchfont='fc-list | rg -i'
 
 # Yazi integration
 function y() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-  yazi "$@" --cwd-file="$tmp"
-  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-    cd -- "$cwd"
-  fi
-  rm -f -- "$tmp"
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
 }
 
 function dls(){
@@ -49,13 +49,30 @@ function dls(){
 
 # Sesh sessions for Bash (using readline binding)
 function sesh-sessions() {
-  local session
-  session=$(sesh list -T | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
-  if [[ -n "$session" ]]; then
-    sesh connect "$session"
-  fi
+    local session
+    session=$(sesh list -T | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
+    if [[ -n "$session" ]]; then
+        sesh connect "$session"
+    fi
 }
 bind -x '"\es": sesh-sessions'
+
+# Apply wallust colors manually and update VS Code settings
+wallust-theme() {
+    if [ -z "$1" ]; then
+        echo "Usage: wallust-theme /path/to/image.jpg"
+        return 1
+    fi
+
+    # Run wallust on the chosen image
+    wallust run "$1"
+
+    # Merge generated colors-code.json into VS Code settings.json using jq
+    if command -v jq &> /dev/null && [ -f ~/.config/Code/User/colors-code.json ]; then
+        jq -s '.[0] * .[1]' ~/.config/Code/User/settings.json ~/.config/Code/User/colors-code.json > ~/.config/Code/User/settings.json.tmp \
+            && mv ~/.config/Code/User/settings.json.tmp ~/.config/Code/User/settings.json
+    fi
+}
 
 # ==========================================
 # 5. INITS & INTEGRATIONS
