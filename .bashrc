@@ -2,14 +2,11 @@
 # 1. PATH EXPORTS & ENVIRONMENT
 # ==========================================
 export PATH="$PATH:$HOME/Applications/"
-export PATH="$PATH:$HOME/dotfiles/Scripts/"
 export PATH="/home/kanishk/.local/bin:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
 
 export EDITOR="/usr/bin/nano"
 export TERMINAL="/usr/bin/kitty"
-export NODE_OPTIONS="--disable-warning=ExperimentalWarning"
-
 # ==========================================
 # 2. BASH HISTORY CONFIG
 # ==========================================
@@ -93,20 +90,20 @@ eval "$(fzf --bash)"
 # ==========================================
 # 6. LAZY LOAD CONDA & FNM
 # ==========================================
+# Lazy load Conda
 conda() {
     unset -f conda
-    __conda_setup="$('/home/kanishk/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)" 
+    __conda_setup="$("$HOME/miniconda3/bin/conda" 'shell.bash' 'hook' 2> /dev/null)" 
     if [ $? -eq 0 ]; then 
         eval "$__conda_setup" 
+    elif [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then 
+        . "$HOME/miniconda3/etc/profile.d/conda.sh" 
     else 
-        if [ -f "/home/kanishk/miniconda3/etc/profile.d/conda.sh" ]; then 
-            . "/home/kanishk/miniconda3/etc/profile.d/conda.sh" 
-        else 
-            export PATH="/home/kanishk/miniconda3/bin:$PATH" 
-        fi 
+        export PATH="$HOME/miniconda3/bin:$PATH" 
     fi 
     unset __conda_setup
     conda "$@"
 }
 
+# Auto-switch Node versions with fnm
 eval "$(fnm env --use-on-cd)"
