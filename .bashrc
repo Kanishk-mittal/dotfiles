@@ -24,6 +24,7 @@ shopt -s histappend
 # ==========================================
 alias l="eza -lah"
 alias n="nvim"
+alias rm="rm -i"
 alias nf="nvim ./"
 alias ls="eza"
 alias c="clear"
