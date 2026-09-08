@@ -60,6 +60,7 @@ alias update='yay -Syu --disable-download-timeout'
 alias storage="df -h | grep 'Filesystem\|nvme'"
 alias lg='lazygit'
 alias searchfont='fc-list | rg -i'
+alias rm="rm -r"
 
 # yazi
 function y() {
@@ -69,11 +70,6 @@ function y() {
     cd -- "$cwd"
   fi
   rm -f -- "$tmp"
-}
-
-function dls(){
-    DIR="$*"
-    du -shc * | sort -h
 }
 
 function sesh-sessions() {
@@ -92,20 +88,6 @@ zle     -N             sesh-sessions
 bindkey -M emacs '\es' sesh-sessions
 bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
-
-# ==========================================
-# 5. PYTHON VENV HOOK
-# ==========================================
-python_venv() {
-  MYVENV=./.venv
-  # when you cd into a folder that contains $MYVENV
-  [[ -d $MYVENV ]] && source $MYVENV/bin/activate > /dev/null 2>&1
-  # when you cd into a folder that doesn't
-  [[ ! -d $MYVENV ]] && deactivate > /dev/null 2>&1
-}
-autoload -U add-zsh-hook
-add-zsh-hook chpwd python_venv
-python_venv
 
 # ==========================================
 # 6. PLUGINS & INITS
@@ -129,15 +111,13 @@ source <(fzf --zsh)
 # Conda initialization is heavy, so it only runs when you type 'conda'
 conda() {
     unset -f conda
-    __conda_setup="$('/home/kanishk/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)" 
+    __conda_setup="$("$HOME/miniconda3/bin/conda" 'shell.bash' 'hook' 2> /dev/null)" 
     if [ $? -eq 0 ]; then 
         eval "$__conda_setup" 
+    elif [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then 
+        . "$HOME/miniconda3/etc/profile.d/conda.sh" 
     else 
-        if [ -f "/home/kanishk/miniconda3/etc/profile.d/conda.sh" ]; then 
-            . "/home/kanishk/miniconda3/etc/profile.d/conda.sh" 
-        else 
-            export PATH="/home/kanishk/miniconda3/bin:$PATH" 
-        fi 
+        export PATH="$HOME/miniconda3/bin:$PATH" 
     fi 
     unset __conda_setup
     conda "$@"
