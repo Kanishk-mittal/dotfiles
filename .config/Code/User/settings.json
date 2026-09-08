@@ -102,5 +102,6 @@
     "gleam": "gleam run -m $fileNameWithoutExt"
   },
   "terminal.integrated.defaultProfile.linux": "bash",
-  "terminal.external.linuxExec": "kitty"
+  "terminal.external.linuxExec": "kitty",
+  "workbench.startupEditor": "none"
 }
