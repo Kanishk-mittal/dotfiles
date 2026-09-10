@@ -52,3 +52,6 @@ yazi.target = '~/.config/yazi/theme.toml'
 
 code.template = 'colors-code.json'
 code.target="~/.config/Code/User/colors-code.json"
+
+nvim.template = 'colors-nvim.lua'
+nvim.target = '~/.config/nvim/lua/colors.lua'

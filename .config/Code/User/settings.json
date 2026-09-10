@@ -103,5 +103,6 @@
   },
   "terminal.integrated.defaultProfile.linux": "bash",
   "terminal.external.linuxExec": "kitty",
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "network.meteredConnection": "off"
 }
