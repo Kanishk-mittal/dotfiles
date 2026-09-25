@@ -104,5 +104,11 @@
   "terminal.integrated.defaultProfile.linux": "bash",
   "terminal.external.linuxExec": "kitty",
   "workbench.startupEditor": "none",
-  "network.meteredConnection": "off"
+  "network.meteredConnection": "off",
+  "editor.minimap.enabled": false,
+  "update.showReleaseNotes": false,
+  "explorer.confirmDragAndDrop": false,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "notebook.lineNumbers": "on",
+  "notebook.output.wordWrap": true
 }

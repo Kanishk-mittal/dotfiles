@@ -5,51 +5,51 @@
 # ==============================================================================
 [app]
 # The app's overall style, supporting terminal background colors if OSC 11 is supported
-overall = { bg = "#1A1717" }
+overall = { bg = "#1D1F1C" }
 
 # ==============================================================================
 # Manager Pane Layout Styling
 # ==============================================================================
 [mgr]
-cwd = { fg = "#AE8D28", italic = true }
+cwd = { fg = "#AAAC48", italic = true }
 
 # Visual Selections & Finds
-find_keyword = { fg = "#968149", bg = "#1A1717", bold = true, underline = true }
-find_position = { fg = "#AE8D28", bg = "#1A1717", bold = true }
+find_keyword = { fg = "#707355", bg = "#1D1F1C", bold = true, underline = true }
+find_position = { fg = "#888A46", bg = "#1D1F1C", bold = true }
 
 # Symbolic Links
-symlink_target = { fg = "#AE8D28" }
+symlink_target = { fg = "#AAAC48" }
 
 # Markers
-marker_copied = { fg = "#968149", bg = "#968149" }
-marker_cut = { fg = "#76674C", bg = "#76674C" }
-marker_marked = { fg = "#89774F", bg = "#89774F" }
-marker_selected = { fg = "#9B7F2F", bg = "#9B7F2F" }
+marker_copied = { fg = "#707355", bg = "#707355" }
+marker_cut = { fg = "#495145", bg = "#495145" }
+marker_marked = { fg = "#675D4D", bg = "#675D4D" }
+marker_selected = { fg = "#648C63", bg = "#648C63" }
 
 # Counts
-count_copied = { fg = "#1A1717", bg = "#968149" }
-count_cut = { fg = "#1A1717", bg = "#76674C" }
-count_selected = { fg = "#1A1717", bg = "#9B7F2F" }
+count_copied = { fg = "#1D1F1C", bg = "#707355" }
+count_cut = { fg = "#1D1F1C", bg = "#495145" }
+count_selected = { fg = "#1D1F1C", bg = "#648C63" }
 
 # Border Accents
 border_symbol = "│"
-border_style = { fg = "#A59566" }
+border_style = { fg = "#A3A375" }
 
 # ==============================================================================
 # Indicator Bars (Pane Borders)
 # ==============================================================================
 [indicator]
-parent = { fg = "#A59566" }
-current = { fg = "#9B7F2F" }
-preview = { fg = "#A59566" }
+parent = { fg = "#A3A375" }
+current = { fg = "#648C63" }
+preview = { fg = "#A3A375" }
 padding = { open = "", close = "" }
 
 # ==============================================================================
 # Top Navigation Tabs
 # ==============================================================================
 [tabs]
-active = { fg = "#89774F", bg = "#1A1717", bold = true }
-inactive = { fg = "#EBD592", bg = "#1A1717" }
+active = { fg = "#675D4D", bg = "#1D1F1C", bold = true }
+inactive = { fg = "#E9EAA7", bg = "#1D1F1C" }
 sep_inner = { open = "", close = "" }
 sep_outer = { open = "", close = "" }
 
@@ -57,98 +57,98 @@ sep_outer = { open = "", close = "" }
 # Status Bar (Bottom Panel)
 # ==============================================================================
 [status]
-overall = { bg = "#1A1717" }
+overall = { bg = "#1D1F1C" }
 separator_open = ""
 separator_close = ""
 
 # Permissions
-perm_type = { fg = "#9B7F2F" }
-perm_read = { fg = "#968149" }
-perm_write = { fg = "#76674C" }
-perm_exec = { fg = "#89774F" }
-perm_sep = { fg = "#A59566" }
+perm_type = { fg = "#648C63" }
+perm_read = { fg = "#707355" }
+perm_write = { fg = "#495145" }
+perm_exec = { fg = "#675D4D" }
+perm_sep = { fg = "#A3A375" }
 
 # Progress Bar
-progress_label = { fg = "#F7E8B8", bold = true }
-progress_normal = { fg = "#9B7F2F", bg = "#1A1717" }
-progress_error = { fg = "#76674C", bg = "#1A1717" }
+progress_label = { fg = "#F5F6C7", bold = true }
+progress_normal = { fg = "#648C63", bg = "#1D1F1C" }
+progress_error = { fg = "#495145", bg = "#1D1F1C" }
 
 # ==============================================================================
 # Modes (Status bar mode pills)
 # ==============================================================================
 [mode]
-normal_main = { fg = "#1A1717", bg = "#9B7F2F", bold = true }
-normal_alt = { fg = "#9B7F2F", bg = "#1A1717" }
-select_main = { fg = "#1A1717", bg = "#968149", bold = true }
-select_alt = { fg = "#968149", bg = "#1A1717" }
-unset_main = { fg = "#1A1717", bg = "#76674C", bold = true }
-unset_alt = { fg = "#76674C", bg = "#1A1717" }
+normal_main = { fg = "#1D1F1C", bg = "#648C63", bold = true }
+normal_alt = { fg = "#648C63", bg = "#1D1F1C" }
+select_main = { fg = "#1D1F1C", bg = "#707355", bold = true }
+select_alt = { fg = "#707355", bg = "#1D1F1C" }
+unset_main = { fg = "#1D1F1C", bg = "#495145", bold = true }
+unset_alt = { fg = "#495145", bg = "#1D1F1C" }
 
 # ==============================================================================
 # Input & Popups
 # ==============================================================================
 [input]
-border = { fg = "#AE8D28" }
-title = { fg = "#AE8D28", bold = true }
-value = { fg = "#F7E8B8" }
-selected = { bg = "#A59566" }
+border = { fg = "#888A46" }
+title = { fg = "#888A46", bold = true }
+value = { fg = "#F5F6C7" }
+selected = { bg = "#A3A375" }
 
 [confirm]
-border = { fg = "#9B7F2F" }
-title = { fg = "#9B7F2F", bold = true }
-body = { fg = "#F7E8B8" }
-list = { fg = "#AE8D28" }
-btn_yes = { fg = "#1A1717", bg = "#89774F" }
-btn_no = { fg = "#F7E8B8", bg = "#1A1717" }
+border = { fg = "#648C63" }
+title = { fg = "#648C63", bold = true }
+body = { fg = "#F5F6C7" }
+list = { fg = "#888A46" }
+btn_yes = { fg = "#1D1F1C", bg = "#675D4D" }
+btn_no = { fg = "#F5F6C7", bg = "#1D1F1C" }
 btn_labels = ["  [Y]es  ", "  (N)o  "]
 
 [notify]
-title_info = { fg = "#89774F" }
-title_warn = { fg = "#968149" }
-title_error = { fg = "#76674C" }
+title_info = { fg = "#675D4D" }
+title_warn = { fg = "#707355" }
+title_error = { fg = "#495145" }
 
 # ==============================================================================
 # Menus, Pickers, & Which-Key
 # ==============================================================================
 [pick]
-border = { fg = "#9B7F2F" }
-active = { fg = "#89774F", bold = true }
-inactive = { fg = "#F7E8B8" }
+border = { fg = "#648C63" }
+active = { fg = "#675D4D", bold = true }
+inactive = { fg = "#F5F6C7" }
 
 [cmp] # Completions
-border = { fg = "#AE8D28" }
-active = { fg = "#1A1717", bg = "#AE8D28", bold = true }
-inactive = { fg = "#F7E8B8" }
+border = { fg = "#AAAC48" }
+active = { fg = "#1D1F1C", bg = "#AAAC48", bold = true }
+inactive = { fg = "#F5F6C7" }
 icon_file = "📄"
 icon_folder = "📁"
 icon_command = "🚀"
 
 [spot] # Spotter Menu
-border = { fg = "#9B7F2F" }
-title = { fg = "#9B7F2F", bold = true }
-tbl_col = { fg = "#89774F" }
-tbl_cell = { fg = "#1A1717", bg = "#9B7F2F" }
+border = { fg = "#648C63" }
+title = { fg = "#648C63", bold = true }
+tbl_col = { fg = "#675D4D" }
+tbl_cell = { fg = "#1D1F1C", bg = "#648C63" }
 
 [which]
 cols = 3
-mask = { bg = "#1A1717" }
-cand = { fg = "#AE8D28" }
-rest = { fg = "#A59566" }
-desc = { fg = "#AE8D28" }
+mask = { bg = "#1D1F1C" }
+cand = { fg = "#AAAC48" }
+rest = { fg = "#A3A375" }
+desc = { fg = "#888A46" }
 separator = " ➜ "
-separator_style = { fg = "#A59566" }
+separator_style = { fg = "#A3A375" }
 
 [tasks]
-border = { fg = "#9B7F2F" }
-title = { fg = "#9B7F2F", bold = true }
-hovered = { fg = "#89774F", bold = true }
+border = { fg = "#648C63" }
+title = { fg = "#648C63", bold = true }
+hovered = { fg = "#675D4D", bold = true }
 
 [help]
-on = { fg = "#AE8D28" }
-run = { fg = "#AE8D28" }
-desc = { fg = "#F7E8B8" }
-hovered = { bg = "#A59566", bold = true }
-footer = { fg = "#1A1717", bg = "#F7E8B8" }
+on = { fg = "#AAAC48" }
+run = { fg = "#888A46" }
+desc = { fg = "#F5F6C7" }
+hovered = { bg = "#A3A375", bold = true }
+footer = { fg = "#1D1F1C", bg = "#F5F6C7" }
 icon_info = "ℹ️"
 icon_warn = "⚠️"
 icon_error = "❌"
@@ -158,47 +158,47 @@ icon_error = "❌"
 # ==============================================================================
 [icon]
 prepend_dirs = [
-    { name = "Desktop", text = "", fg = "#9B7F2F" },
-    { name = "Documents", text = "", fg = "#9B7F2F" },
-    { name = "Downloads", text = "", fg = "#9B7F2F" },
-    { name = "Music", text = "", fg = "#9B7F2F" },
-    { name = "Pictures", text = "", fg = "#9B7F2F" },
-    { name = "Videos", text = "", fg = "#9B7F2F" },
+    { name = "Desktop", text = "", fg = "#648C63" },
+    { name = "Documents", text = "", fg = "#648C63" },
+    { name = "Downloads", text = "", fg = "#648C63" },
+    { name = "Music", text = "", fg = "#648C63" },
+    { name = "Pictures", text = "", fg = "#648C63" },
+    { name = "Videos", text = "", fg = "#648C63" },
 ]
 
 prepend_conds = [
     # Global catch-all condition: if it is a directory, color it Wallust green
-    { if = "dir", text = "", fg = "#9B7F2F" },
+    { if = "dir", text = "", fg = "#648C63" },
 ]
 
 # Comprehensive File Type Color Overrides
 [filetype]
 rules = [
     # Directories / Folders
-    { mime = "inode/directory", fg = "#9B7F2F", bold = true },
+    { mime = "inode/directory", fg = "#648C63", bold = true },
 
     # Text & Source Code files
-    { mime = "text/*", fg = "#F7E8B8" },
-    { mime = "application/{json,xml,toml,yaml,javascript}", fg = "#AE8D28" },
+    { mime = "text/*", fg = "#F5F6C7" },
+    { mime = "application/{json,xml,toml,yaml,javascript}", fg = "#AAAC48" },
 
     # Executables and Scripts
-    { mime = "application/x-executable", fg = "#89774F", bold = true },
-    { mime = "application/x-shellscript", fg = "#89774F" },
+    { mime = "application/x-executable", fg = "#675D4D", bold = true },
+    { mime = "application/x-shellscript", fg = "#675D4D" },
 
     # Rich Documents
-    { mime = "application/pdf", fg = "#76674C" },
-    { mime = "application/msword", fg = "#9B7F2F" },
+    { mime = "application/pdf", fg = "#495145" },
+    { mime = "application/msword", fg = "#648C63" },
 
     # Images & Media
-    { mime = "image/*", fg = "#AE8D28" },
-    { mime = "image/svg+xml", fg = "#E8BC35" },
-    { mime = "video/*", fg = "#76674C" },
-    { mime = "audio/*", fg = "#968149" },
+    { mime = "image/*", fg = "#888A46" },
+    { mime = "image/svg+xml", fg = "#9B9D34" },
+    { mime = "video/*", fg = "#495145" },
+    { mime = "audio/*", fg = "#707355" },
 
     # Archives
-    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive}", fg = "#A8852A" },
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive}", fg = "#82865D" },
 
     # Fallback/Orphans
-    { url = "*", is = "orphan", fg = "#76674C" },
-    { url = "*", fg = "#F7E8B8" },
+    { url = "*", is = "orphan", fg = "#495145" },
+    { url = "*", fg = "#F5F6C7" },
 ]

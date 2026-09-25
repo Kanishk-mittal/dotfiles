@@ -4,6 +4,7 @@
 export PATH=$PATH:$HOME/Applications/
 export PATH=$PATH:$HOME/dotfiles/Scripts/
 export PATH="/home/kanishk/.local/bin:$PATH"
+export PATH="$PATH:/home/kanishk/.foundry/bin"
 
 # Safe global npm binaries path (since you are using system Node)
 export PATH="$HOME/.npm-global/bin:$PATH"
@@ -51,6 +52,7 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 # 4. ALIASES & FUNCTIONS
 # ==========================================
 alias l="eza -lah"
+alias ping="ping -c 4"
 alias n="nvim"
 alias nf="nvim ./"
 alias ls="eza"
@@ -60,7 +62,8 @@ alias update='yay -Syu --disable-download-timeout'
 alias storage="df -h | grep 'Filesystem\|nvme'"
 alias lg='lazygit'
 alias searchfont='fc-list | rg -i'
-alias rm="rm -r"
+alias dokcer='docker'
+alias rm="rm -i"
 
 # yazi
 function y() {

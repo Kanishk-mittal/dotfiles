@@ -4,7 +4,7 @@ local colors = {
   foreground = "{{foreground}}",
   cursor     = "{{cursor}}",
   color0     = "{{color0}}",
-  color1     = "{{foreground}}",
+  color1     = "{{color1}}",
   color2     = "{{color2}}",
   color3     = "{{color3}}",
   color4     = "{{color4}}",
@@ -44,8 +44,8 @@ set_hl(0, "Visual", { bg = colors.color0 })
 
 -- Syntax highlights
 set_hl(0, "Comment", { fg = colors.color7, italic = true }) -- Uses bright color7
-set_hl(0, "Constant", { fg = colors.color3 })
-set_hl(0, "String", { fg = colors.color2 })
+set_hl(0, "Constant", { fg = colors.color14 })
+set_hl(0, "String", { fg = colors.color12 })
 set_hl(0, "Identifier", { fg = colors.foreground })
 set_hl(0, "Function", { fg = colors.color4 })
 set_hl(0, "Statement", { fg = colors.color4, bold = true }) -- Swapped color5 for color4
@@ -58,11 +58,11 @@ set_hl(0, "@keyword", { fg = colors.color6, bold = true })
 set_hl(0, "@keyword.directive", { fg = colors.color4, bold = true })
 set_hl(0, "@comment", { fg = colors.color7, italic = true })
 set_hl(0, "@variable", { fg = colors.foreground })
-set_hl(0, "@string", { fg = colors.color2 })
+set_hl(0, "@string", { fg = colors.color12 })
 
 -- Diagnostics (Fixed typo: colors.fo -> colors.color1)
 set_hl(0, "DiagnosticError", { fg = colors.color1 })
-set_hl(0, "DiagnosticWarn", { fg = colors.color3 })
+set_hl(0, "DiagnosticWarn", { fg = colors.color14 })
 set_hl(0, "DiagnosticInfo", { fg = colors.color4 })
 set_hl(0, "DiagnosticHint", { fg = colors.color6 })
 
